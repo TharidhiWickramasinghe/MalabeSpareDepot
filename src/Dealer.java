@@ -23,7 +23,7 @@ public class Dealer {
 
     public void setDealerName(String dealerName) {this.dealerName = dealerName;}
     public void setDealerMobNo(String dealerMobNo) {this.dealerMobNo = dealerMobNo;}
-    public void setDealerLocation(String dealerLocation) {this.dealerLocation = dealerLocation;} // can remove but kept this because a shop can have the same variable n changes the location
+    public void setDealerLocation(String dealerLocation) {this.dealerLocation = dealerLocation;} 
 
 
     public String toString(){
