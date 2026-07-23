@@ -23,7 +23,7 @@ public class Dealer {
 
     public void setDealerName(String dealerName) {this.dealerName = dealerName;}
     public void setDealerMobNo(String dealerMobNo) {this.dealerMobNo = dealerMobNo;}
-    public void setDealerLocation(String dealerLocation) {this.dealerLocation = dealerLocation;} 
+    public void setDealerLocation(String dealerLocation) {this.dealerLocation = dealerLocation;}
 
 
     public String toString(){
