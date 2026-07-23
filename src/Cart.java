@@ -40,7 +40,7 @@ public class Cart {
     }
 
     public ArrayList<CartItem> getItems(){
-        items.get();
+        return items;
     }
 
     public void clearCart(){
