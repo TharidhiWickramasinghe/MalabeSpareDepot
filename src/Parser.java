@@ -11,10 +11,10 @@ public class Parser {
 
     try{
          File inputFile = new File("data/inventory_legacy.txt");
-         Scanner rf = new Scanner(inputFile);
+         Scanner inventoryScanner = new Scanner(inputFile);
 
-         while (rf.hasNextLine()){
-             String line = rf.nextLine();
+         while (inventoryScanner.hasNextLine()){
+             String line = inventoryScanner.nextLine();
 
              if (line.trim().isEmpty()){
                  continue;
@@ -33,7 +33,6 @@ public class Parser {
                  fields[i] = fields[i].trim();
 
              }
-
 
              try{
                  String priceStr = fields[3].replace("RS.","").replace("Rs","").trim();
@@ -55,12 +54,55 @@ public class Parser {
          }
 
 
-         rf.close();
+        inventoryScanner.close();
     } catch (IOException e){
         System.out.println("Error reading file: " + e.getMessage());
     }
     return partsList;
     }
 
+    public ArrayList<Dealer> parseDealers(){
+        ArrayList<Dealer> dealerList = new ArrayList<>();
+
+        try {
+            File inputFile = new File("data/dealers_legacy.txt");
+            Scanner dealerScanner = new Scanner(inputFile);
+
+            while (dealerScanner.hasNextLine()){
+                String line = dealerScanner.nextLine();
+
+                if (line.trim().isEmpty()){
+                    continue;
+                }
+
+                String delimeter;
+                if(line.contains("|")){
+                    delimeter = "\\|";
+                }else if (line.contains(";")){
+                    delimeter = ";";
+                }else{
+                    delimeter = ",";
+                }
+
+                String[] fields = line.split(delimeter);
+                for(int i =0; i < fields.length; i++){
+                    fields[i] = fields[i].trim();
+                }
+
+                try{
+                    String dealerCode  = fields[0];
+                    String   dealerName= fields[1];
+                    String  dealerMobNo = fields.length > 2? fields[2]: "";
+                    String dealerLocation = fields.length > 3? fields[3]: "";
+
+                    Dealer dealer = new Dealer(dealerCode,dealerName,dealerMobNo,dealerLocation);
+                    dealerList.add(dealer);
+                } catch (Exception e){
+                    System.out.println("Skipping bad dealer: " + line);
+                }
+
+            }
+        }
+    }
 
 }
