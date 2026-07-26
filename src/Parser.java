@@ -34,26 +34,6 @@ public class Parser {
 
              }
 
-             String priceStr = fields[3].replace("Rs.","").replace("Rs","").trim();
-             double price = Double.parseDouble(priceStr);
-             int quantity = Integer.parseInt(fields[4]);
-             String category = fields[5].trim();
-             category = category.substring(0,1).toUpperCase() + category.substring(1).toLowerCase();
-
-
-             Parts part = new Parts(
-                     fields[0],
-                     fields[1],
-                     fields[2],
-                     price,
-                     quantity,
-                     category,
-                     fields[6],
-                     fields[7]
-
-              );
-             partsList.add(part);
-
 
              try{
                  String priceStr = fields[3].replace("RS.","").replace("Rs","").trim();
@@ -80,6 +60,7 @@ public class Parser {
         System.out.println("Error reading file: " + e.getMessage());
     }
     return partsList;
-
     }
+
+
 }
