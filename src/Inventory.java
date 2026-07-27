@@ -51,4 +51,17 @@ public class Inventory {
         }
         return lowStock;
     }
+
+    public boolean updateParts (String partCOde, String newName, String  newBrand, double newPrice, String newCategory){
+        for (int i=0;i< partsList.size(); i++){
+            if(partsList.get(i).getPartCode().equals(partCOde)){
+                partsList.get(i).setName(newName);
+                partsList.get(i).setBrand(newBrand);
+                partsList.get(i).setPrice(newPrice);
+                partsList.get(i).setCategory(newCategory);
+                return true;
+            }
+        }
+        return false;
+    }
 }
